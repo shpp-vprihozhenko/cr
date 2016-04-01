@@ -1,5 +1,10 @@
 var should = require('should');
-var logger = require('../logger');
+
+//var logger = require('../logger');
+function Logger (){
+    this.info=function(){};
+};
+var logger = new Logger();
 
 var Queue = require('../coderunnerQueue.js');
 
@@ -32,11 +37,9 @@ describe ("RunnerQueue tests", function(){
             arTasks.push (task);
 
             queue.push(task, function(err, res) {
-                console.log("Task "+i+" solved!", res);
             });
         }
 
-        console.log("tasks after push", arTasks);
         arTasks[0].state.should.eql({started: true,  finished: false, solved: false});
         arTasks[1].state.should.eql({started: true,  finished: false, solved: false});
         arTasks[2].state.should.eql({started: false, finished: false, solved: false});
@@ -46,7 +49,6 @@ describe ("RunnerQueue tests", function(){
         arTasks[1].state.solved = true;
 
         setTimeout(function(){
-            console.log("tasks after two solved:", arTasks);
             arTasks[0].state.should.eql({started: true, finished: true, solved: true});
             arTasks[1].state.should.eql({started: true, finished: true, solved: true});
             arTasks[2].state.should.eql({started: true, finished: false, solved: false});
