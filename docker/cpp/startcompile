@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /opt/data/input
+mv code code.cpp
+g++ -std=c++11 -o runner code.cpp
+

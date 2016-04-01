@@ -1,0 +1,7 @@
+.idea/
+node/node_modules/
+shared/
+*.log
+.vagrant/
+
+
