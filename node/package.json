@@ -18,6 +18,6 @@
     "winston": "2.1.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive -R xunit test/ > test-reports.xml"
+    "test": "./node_modules/.bin/mocha --recursive -R xunit modules/test/ > test-reports.xml"
   }
 }
