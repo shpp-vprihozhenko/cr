@@ -11,8 +11,13 @@
     "fs": "0.0.2",
     "function-queue": "0.0.12",
     "mkdirp": "^0.5.1",
+    "mocha": "^2.4.5",
     "node-env-file": "^0.1.8",
     "request": "^2.69.0",
+    "should": "^8.3.0",
     "winston": "2.1.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive -R xunit test/ > test-reports.xml"
   }
 }
