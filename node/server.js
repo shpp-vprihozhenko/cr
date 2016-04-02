@@ -64,6 +64,7 @@ var server = app.listen(process.env.SERVER_PORT, function () {
 
 function sendResponse (id, res, statusCode, code, data) {
     saveOnServer({"sessionID": id, "response": {"code": code, "response": data, "someText": "ku-ku"}});
+    data.testMsg = "test msg!";
     res.statusCode = code;
     res.setHeader('Content-Type', 'application/json');
     res.status(statusCode).json({code: code, response: data});
