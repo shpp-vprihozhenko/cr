@@ -1,10 +1,13 @@
 var should = require('should');
+var sinon = require('sinon');
 
-//var logger = require('../logger');
-function Logger (){
-    this.info=function(){};
-};
-var logger = new Logger();
+var logger = require('../logger');
+sinon.stub(logger, "info");
+
+//function Logger (){
+//    this.info=function(){};
+//};
+//var logger = new Logger();
 
 var Queue = require('../coderunnerQueue.js');
 
