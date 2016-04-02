@@ -51,7 +51,6 @@ describe ("RunnerQueue tests", function(){
 
         setTimeout(function(){
             logger.info("tasks. Stage 2", arTasks);
-
             arTasks[0].state.should.eql({started: true, finished: true, solved: true});
             arTasks[1].state.should.eql({started: true, finished: true, solved: true});
             arTasks[2].state.should.eql({started: true, finished: false, solved: false});
