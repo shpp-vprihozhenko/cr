@@ -1,6 +1,5 @@
 #!/bin/sh
-
-ssh app@APP.SERVER.IP.ADDRESS <<EOF
+ssh -i ~/.ssh/id_rsa.pem ubuntu@ec2-54-213-253-8.us-west-2.compute.amazonaws.com <<EOF
   cd ~/cr/cr
   git pull
   npm install --production
