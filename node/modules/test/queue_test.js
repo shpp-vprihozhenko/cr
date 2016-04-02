@@ -4,11 +4,6 @@ var sinon = require('sinon');
 var logger = require('../logger');
 sinon.stub(logger, "info");
 
-//function Logger (){
-//    this.info=function(){};
-//};
-//var logger = new Logger();
-
 var Queue = require('../coderunnerQueue.js');
 
 function DrStub () {
@@ -40,6 +35,7 @@ describe ("RunnerQueue tests", function(){
             arTasks.push (task);
 
             queue.push(task, function(err, res) {
+                logger.info("task finished!", res);
             });
         }
 
@@ -48,14 +44,19 @@ describe ("RunnerQueue tests", function(){
         arTasks[2].state.should.eql({started: false, finished: false, solved: false});
         arTasks[3].state.should.eql({started: false, finished: false, solved: false});
 
+        logger.info("tasks. Stage 1", arTasks);
+
         arTasks[0].state.solved = true;
         arTasks[1].state.solved = true;
 
         setTimeout(function(){
+            logger.info("tasks. Stage 2", arTasks);
+
             arTasks[0].state.should.eql({started: true, finished: true, solved: true});
             arTasks[1].state.should.eql({started: true, finished: true, solved: true});
             arTasks[2].state.should.eql({started: true, finished: false, solved: false});
             arTasks[3].state.should.eql({started: true, finished: false, solved: false});
+
             done();
         }, 300);
 
